@@ -1,0 +1,20 @@
+<project>
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src/main" destdir="build/classes"/>
+	</target>
+	<target name="jar">
+		<mkdir dir="build/jar"/>
+		<jar destfile="build/jar/program.jar" basedir="build/classes">
+			<manifest>
+				<attribute name="Main-Class" value="org.demo.simpleclass.MainClass"/>
+			</manifest>
+		</jar>
+	</target>
+	<target name="run">
+		<java jar="build/jar/program.jar" fork="true"/>
+	</target>	
+</project>
