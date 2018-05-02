@@ -1,0 +1,32 @@
+def releaseType = "_prd_";
+
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+
+// Apply the application plugin to add support for building an application
+apply plugin: 'application'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    if(releaseType=="_dev_"){
+        jcenter()
+	println "\n using jcenter()!!!\n";
+    }else{
+	mavenCentral()
+	println "\n using maven default!!!\n";
+    }
+}
+
+dependencies {
+    // The production code uses Guava
+    compile 'com.google.guava:guava:20.0'
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}
+
+// Define the main class for the application
+mainClassName = 'App'
+
